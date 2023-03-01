@@ -6,4 +6,4 @@
     @endif
     @php($lastId = $material->id)
 @endforeach
-<input type="text" id='last_id' value="{{ $lastId }}" hidden>dd
+<input type="text" id='last_id' value="{{ $lastId }}" hidden>
