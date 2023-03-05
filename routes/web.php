@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\approveController;
+use App\Http\Controllers\catalogController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\mainpageController;
 use App\Http\Controllers\redirectController;
@@ -73,3 +74,7 @@ Route::get('approval', [approveController::class, 'show'])->name('approvalpage')
 Route::get('approvaldelete/{id}', [approveController::class, 'delete'])->name('approvaldelete');
 Route::get('approvaldownload/{id}', [approveController::class, 'download'])->name('approvaldownload');
 Route::post('approved', [approveController::class, 'send'])->name('approved');
+
+
+Route::view('catalog', 'catalog');
+Route::get('catalog', [catalogController::class, 'index'])->name('catalog');

@@ -6,4 +6,8 @@
     @endif
     @php($lastId = $material->id)
 @endforeach
+@if(isset($lastId))
 <input type="text" id='last_id' value="{{ $lastId }}" hidden>
+@endif
+<p hidden id="loading">загружаем ещё...</p>
+

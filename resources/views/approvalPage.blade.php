@@ -23,6 +23,9 @@
                 <input type="text" name="users_id" value="{{ $material->users_id }}" hidden>
                 <input type="text" name="material_id" value="{{ $material->id }}" hidden>
                 <input type="file" name="material" id="">
+                @error('material')
+                    <p>{{ $message }}</p>
+                @enderror
                 <select name="dimentions" id="">
                     <option value="square">Квадратная</option>
                     <option value="vertical">Вертикальная</option>
@@ -34,6 +37,9 @@
                     <option value="illustration">Иллюстрация</option>
                 </select>
                 <textarea name="tags" id="" cols="30" rows="10">{{ $material->tags }}</textarea>
+                @error('tags')
+                    <p>{{ $message }}</p>
+                @enderror
                 <button type="submit">Принять и выставить</button>
             </form>
         </div>

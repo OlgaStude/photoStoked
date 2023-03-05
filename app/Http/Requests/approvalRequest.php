@@ -31,4 +31,13 @@ class approvalRequest extends FormRequest
             'type' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'material.required' => 'файл не выбран',
+            'material.mimes' => 'некорректный формат файла. Разрешенны только: jpg, jpeg, png, svg, mp4, avi, mkv',
+            'tags.required' => 'нужно указать хотя бы один тег',
+        ];
+    }
 }

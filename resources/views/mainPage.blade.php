@@ -12,6 +12,12 @@
         img, video{
             width: 900px;
         }
+        #loading{
+            position: fixed;
+            bottom: 0px;
+            text-align: center;
+            background-color: wheat;
+        }
     </style>
     <title>photoStoked</title>
 </head>
@@ -22,7 +28,6 @@
 
 <div id="posts_data">
     @include('components.data')
-    
 </div>
 
 
@@ -33,6 +38,7 @@
             method: 'GET',
             data: {id: id},
             success: function(data){
+                $("#loading").remove();
                 $("#last_id").remove();
 
                 console.log('success');
@@ -41,11 +47,13 @@
             }
         })
         .fail(function(jqXHR, ajaxOpions, throwError){
-            alert(throwError);
+            $("#loading").remove();
         })
     }
     $(window).scroll(function(){
         if($(window).scrollTop() + $(window).height() >= $(document).height()){
+            $("#loading").show();
+
             let id = $("#last_id").val();
             loadMoreData(id);
         }

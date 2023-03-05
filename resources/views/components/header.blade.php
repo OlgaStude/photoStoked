@@ -1,5 +1,6 @@
 <section class="header">
 <a href="{{ route('mainpage') }}">Главная</a>
+<a href="{{ route('catalog') }}">Каталог</a>
     @guest
         <a href="{{ route('userLogin') }}">Войти</a>
         <a href="{{ route('registration') }}">Регистрация</a>
