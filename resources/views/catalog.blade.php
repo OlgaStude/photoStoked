@@ -43,6 +43,7 @@
         <label for="illustration">иллюстрация</label>
         <hr>
         <button id="sort_btn" type="submit">сортировать</button>
+        <button id="cancel_btn">сбросить</button>
     </form>
     
     <div id="posts_data">
@@ -117,8 +118,10 @@
                 $("#posts_data").empty();
                 loadMoreData(id, '', dementions);
             }
-        })
-        
+        });
+        $('#sort_btn').click(function(){
+            $("input:radio").removeAttr("checked");
+        });
 
     </script>
 </body>
