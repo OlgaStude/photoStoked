@@ -26,6 +26,8 @@
     
     <h1>Каталог</h1>
 
+    <input type="text" id="search_bar">
+
     <form action="" id="filter_form" method="get">
         @csrf
         <input type="radio" name="dementions" value="square" id="square">
@@ -54,11 +56,11 @@
     
     
     <script>
-        function loadMoreData(id = "", type = '', dementions = ''){
+        function loadMoreData(id = "", type = '', dementions = '', search_word = ''){
             $.ajax({
                 url: '{{ route("catalog") }}',
                 method: 'GET',
-                data: {id: id, type: type, dementions: dementions}, 
+                data: {id: id, type: type, dementions: dementions, search_word: search_word}, 
                 success: function(data){
                     $("#loading").remove();
                     $("#last_id").remove();
@@ -72,12 +74,16 @@
                 $("#loading").remove();
             })
         }
-        $(window).scroll(function(){
+        $(window).scroll(function(type = $('input[name=type]:checked', '#filter_form').val()){
             if($(window).scrollTop() + $(window).height() >= $(document).height()){
                 $("#loading").show();
                 let id = $("#last_id").val();
                 
-                if($('input[name=type]:checked', '#filter_form').val() != undefined && $('input[name=dementions]:checked', '#filter_form').val() != undefined){
+                if($('#search_bar').val() != ''){
+                    let search_word = $('#search_bar').val();
+                    loadMoreData(id, '', '', search_word);
+                }
+                else if($('input[name=type]:checked', '#filter_form').val() != undefined && $('input[name=dementions]:checked', '#filter_form').val() != undefined){
                     let type = $('input[name=type]:checked', '#filter_form').val();
                     let dementions = $('input[name=dementions]:checked', '#filter_form').val();
                     loadMoreData(id, type, dementions);
@@ -98,10 +104,22 @@
             }
         })
 
+
+        $('#search_bar').keypress(function(event){
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if(keycode == '13'){
+                let id = parseInt(parseInt($("#first_id").val())) + 1;
+                $("#posts_data").empty();
+                let search_word = $(this).val();
+                loadMoreData(id, '', '', search_word);
+            }
+        });
+
         
         $('#sort_btn').click(function(e){
             e.preventDefault();
-            let id = $("#first_id").val() + 1;
+            $('#search_bar').val('');
+            let id = parseInt($("#first_id").val()) + 1;
             if($('input[name=type]:checked', '#filter_form').val() != undefined && $('input[name=dementions]:checked', '#filter_form').val() != undefined){
                 let type = $('input[name=type]:checked', '#filter_form').val();
                 let dementions = $('input[name=dementions]:checked', '#filter_form').val();
