@@ -48,6 +48,8 @@
         <button id="cancel_btn">сбросить</button>
     </form>
     
+@php($cur_id = 0)
+@php($lastId = 0)
     <div id="posts_data">
         @include('components.data')
     </div>
