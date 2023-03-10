@@ -19,12 +19,20 @@
             text-align: center;
             background-color: wheat;
         }
+        #tags p{
+            display: inline;
+        }
     </style>
 </head>
 <body>
 @include('components.header')
     
     <h1>Каталог</h1>
+
+    <div id="tags">
+        @include('components.tags')
+    </div>
+
 
     <input type="text" id="search_bar">
 
@@ -48,7 +56,6 @@
         <button id="cancel_btn">сбросить</button>
     </form>
     
-@php($cur_id = 0)
 @php($lastId = 0)
     <div id="posts_data">
         @include('components.data')
@@ -58,11 +65,11 @@
     
     
     <script>
-        function loadMoreData(id = "", type = '', dementions = '', search_word = ''){
+        function loadMoreData(id = "", type = '', dementions = '', search_word = '', tag_name = ''){
             $.ajax({
                 url: '{{ route("catalog") }}',
                 method: 'GET',
-                data: {id: id, type: type, dementions: dementions, search_word: search_word}, 
+                data: {id: id, type: type, dementions: dementions, search_word: search_word, tag_name: tag_name}, 
                 success: function(data){
                     $("#loading").remove();
                     $("#last_id").remove();
@@ -81,7 +88,11 @@
                 $("#loading").show();
                 let id = $("#last_id").val();
                 
-                if($('#search_bar').val() != ''){
+                if($('#tags p').find('a.active').length !== 0){
+                    let tag_name = $('#tags p').find('a.active').text();
+                    loadMoreData(id, '', '', '', tag_name);
+                }
+                else if($('#search_bar').val() != ''){
                     let search_word = $('#search_bar').val();
                     loadMoreData(id, '', '', search_word);
                 }
@@ -107,7 +118,42 @@
         })
 
 
+        function loadOthersTags(id = ""){
+            $.ajax({
+                url: '{{ route("catalog") }}',
+                method: 'GET',
+                data: {tag_id: id}, 
+                success: function(data){
+                    $('#tags').empty();
+                    $('#tags').append(data);
+                    let id = $('#tag_btn').val();
+                }
+            })
+            .fail(function(jqXHR, ajaxOpions, throwError){
+                $("#loading").remove();
+            })
+        }
+        $('body').on('click','#tag_btn', function(){
+            let id = $(this).val();
+            console.log("1:"+id);
+            loadOthersTags(id);
+        });
+        
+
+        $('body').on('click', '.tag_link', function(){
+            $('#tags p').find('a.active').removeClass('active');
+            $(this).addClass('active');
+            let tag_name = $(this).text();
+            let id = parseInt($("#first_id").val()) + 1;
+            $("#posts_data").empty();
+            $('#search_bar').val('');
+            loadMoreData(id, '', '', '', tag_name);
+
+        });
+
+
         $('#search_bar').keypress(function(event){
+            $('#tags p').find('a.active').removeClass('active');
             var keycode = (event.keyCode ? event.keyCode : event.which);
             if(keycode == '13'){
                 let id = parseInt(parseInt($("#first_id").val())) + 1;
@@ -120,6 +166,8 @@
         
         $('#sort_btn').click(function(e){
             e.preventDefault();
+            $('#tags p').find('a.active').removeClass('active');
+
             $('#search_bar').val('');
             let id = parseInt($("#first_id").val()) + 1;
             if($('input[name=type]:checked', '#filter_form').val() != undefined && $('input[name=dementions]:checked', '#filter_form').val() != undefined){
