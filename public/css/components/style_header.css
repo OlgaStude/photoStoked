@@ -1,0 +1,115 @@
+#header{
+    width: 100%;
+    height: 77px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #1D1A0F;
+    box-shadow: 0px -8px 10px 12px rgba(32, 19, 13, 0.25);
+    position: fixed;
+    top: 0;
+}
+    #header_left, #header_right{
+        display: flex;
+        column-gap: 30px;
+        margin-right: 31px;
+    }
+        #logo{
+            width: 80px;
+            height: 100%;
+        }
+        #header_left p, #header_right>p{
+            height: 24px;
+            font-size: 20px;
+            font-weight: 600;
+            color: #1D1A0F;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+            #header a, #header a:visited{
+                color: #1D1A0F;
+                text-decoration: none;
+                transition-duration: 0.3s;
+            }
+            #header a:hover{
+                color: #E85F5F;
+            }
+        #header_pfp{
+            width: 56px;
+            height: 56px;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 30px;
+            transition-duration: 0.3s;
+            outline: 1px solid #fff;
+        }
+            #header_pfp:hover{
+                outline: 1px solid #E85F5F;
+            }
+        #header_bell{
+            width: 35px;
+            height: 35px;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+            #header span::after{
+                content: '';
+                border: 1px solid #E85F5F;
+                border-radius: 20px;
+                width: 10px;
+                height: 10px;
+                background-color: #E85F5F;
+                color: #E85F5F;
+                bottom: 20px;
+                right: 120px;
+                position: absolute;
+            }
+            .no_message::after{
+                display: none;
+            }
+        #messeges{
+            position: absolute;
+            top: 77px;
+            right: 80px;
+            width: 215px;
+            height: 166px;
+            border-width: 0px 1px 1px 1px;
+            border-style: solid;
+            border-color: #1D1A0F;
+            background-color: #fff;
+            box-shadow: 0px 6px 6px -1px rgba(7, 73, 57, 0.38);
+            padding: 0 6px;
+        }
+        .mess_invisible{
+            display: none;
+        }
+            #message{
+                display: flex;
+                padding: 11px 0px;
+                border-bottom: 1px solid #1D1A0F;
+            }
+                #message_pfp{
+                    width: 56px;
+                    height: 56px;
+                    border-radius: 30px;
+                }
+                #message p{
+                    font-size: 14px;
+                    font-weight: 400;
+                    text-align: center;
+                    margin-top: 14px;
+                }
+                #del_btn{
+                    width: 18px;
+                    height: 18px;
+                    position: absolute;
+                    top: 9px;
+                    right: 16px;
+                    cursor: pointer;
+                }
+                #message_none{
+                    margin-top: 60px;
+                }

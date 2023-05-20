@@ -1,0 +1,21 @@
+img, video{
+    width: 900px;
+}
+#popular_authors img{
+    width: 100px;
+}
+#loading{
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    background-color: wheat;
+}
+.liked{
+    background-color: red;
+}
+.notliked{
+    background-color: grey;
+}
+#popular_data img, #popular_data video{
+    width: 200px;
+}
