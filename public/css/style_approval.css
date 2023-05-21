@@ -1,0 +1,115 @@
+@import url(clear.css);
+@import url(components/style_header.css);
+
+
+#container{
+    min-height: 90vh;
+}
+
+.sendApproved{
+    margin: 43px 55px 0px 55px;
+    padding: 28px 20px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #1D1A0F;
+}
+    .left{
+        display: flex;
+        column-gap: 30px;
+    }
+        .pfp{
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            margin-bottom: 17px;
+        }
+        .user_name, .user_name:visited{
+            color: #1D1A0F;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        .user_name:hover{
+            color: #E85F5F;
+        }
+        .btn, .btn:hover{
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 7px 0px;
+            width: 91px;
+            text-align: center;
+        }
+        .download{
+            background-color: #1D1A0F;
+            margin-top: 17px;
+            margin-bottom: 11px;
+            transition-duration: 0.5s;
+        }
+            .download:hover{
+                color: #1D1A0F;
+                background-color: #e8e8e8;
+                outline: 1px solid #1D1A0F;
+                border-left: 1px solid #1D1A0F;
+                border-right: 1px solid #1D1A0F;
+            }
+        .delete{
+            background-color: #E85F5F;
+        }
+        .material_img, video{
+            width: 364px;
+        }
+
+form{
+    width: 297px;
+    text-align: right;
+}
+    .file_upload{
+        display: none;
+    }
+    label{
+        display: block;
+        float: right;
+        width: 123px;
+        height: 31px;
+        font-size: 14px;
+        font-weight: 600;
+        padding-top: 7px;
+        text-align: center;
+        border: 1px solid #1D1A0F;
+        margin-bottom: 24px;
+    }
+    select{
+        width: 193px;
+        height: 31px;
+        font-size: 14px;
+        border: 1px solid #1D1A0F;
+        margin-bottom: 12px;
+    }
+    input{
+        width: 297px;
+        height: 31px;
+        font-size: 12px;
+        padding: 8px;
+        margin-bottom: 41px;
+    }
+    form button{
+        width: 208px;
+        height: 31px;
+        color: white;
+        background-color: #1D1A0F;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition-duration: 0.5s;
+    }
+        form button:hover{
+            color: #1D1A0F;
+            background-color: #e8e8e8;
+            border: 1px solid #1D1A0F;
+        }
+
+    .space{
+        height: 150px;
+    }

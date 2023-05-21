@@ -1,0 +1,86 @@
+@import url(clear.css);
+@import url(components/style_header.css);
+
+#explanation{
+    width: 855px;
+    margin: auto;
+    margin-top: 58px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 23.68px;
+    margin-bottom: 47px;
+}
+
+#container{
+    height: 90vh;
+}
+
+form{
+    width: 1056px;
+    height: 131px;
+    margin: auto;
+    display: flex;
+    position: relative;
+    padding-bottom: 100px;
+}
+    .file_upload{
+        display: none;
+    }
+    label{
+        border: 1px solid #1D1A0F;
+        height: 100%;
+        width: 156px;
+        background-color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+        padding-top: 7px;
+        cursor: pointer;
+    }
+    input{
+        width: 297px;
+        height: 100%;
+        border: 1px solid #1D1A0F;
+        background-color: #fff;
+        font-size: 12px;
+        padding: 8px;
+        margin-left: 34px;
+    }
+    button{
+        width: 208px;
+        height: 100%;
+        background-color: #1D1A0F;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        transition-duration: 0.5s;
+        cursor: pointer;
+        margin-left: 310px;
+    }
+    button:hover{
+        background-color: #e8e8e8;
+        color: #1D1A0F;
+        border: 1px solid #1D1A0F;
+    }
+
+    .succsess{
+        position: absolute;
+        right: 140px;
+        top: 35px;
+        font-size: 12px;
+    }
+    .error_file{
+        position: absolute;
+        width: 140px;
+        left: 10px;
+        top: 35px;
+        font-size: 12px;
+        color: #E85F5F;
+    }
+    .error_tags{
+        position: absolute;
+        left: 200px;
+        top: 35px;
+        font-size: 12px;
+        color: #E85F5F;
+    }
