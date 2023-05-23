@@ -34,6 +34,7 @@
     <div id="posts_data">
         @include('components.data')
     </div>
+    <div class="space"></div>
     
 </div>
 @include('components.footer')

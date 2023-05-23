@@ -85,6 +85,16 @@
             background-color: #fff;
             box-shadow: 0px 6px 6px -1px rgba(7, 73, 57, 0.38);
             padding: 0 6px;
+            overflow-y: auto;
+        }
+        #messeges::-webkit-scrollbar {
+            width: 10px;
+        }
+        #messeges::-webkit-scrollbar-track {
+        background: #e8e8e8; 
+        }
+        #messeges::-webkit-scrollbar-thumb {
+        background: #1D1A0F; 
         }
         .mess_invisible{
             display: none;
@@ -93,6 +103,7 @@
                 display: flex;
                 padding: 11px 0px;
                 border-bottom: 1px solid #1D1A0F;
+                position: relative;
             }
                 #message_pfp{
                     width: 56px;
@@ -117,9 +128,10 @@
                     margin-top: 60px;
                 }
 
-
-footer{
+footer, .space{
     height: 77px;
+}
+footer{
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -143,3 +155,138 @@ footer{
             text-decoration: none;
             color: #fff;
         }
+
+/* materials */
+
+#post_data{
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    width: 1248px;
+    margin: auto;
+    margin-top: 20px;
+    column-gap: 3px;
+}
+.material_container{
+    width: 414px;
+    height: 430px;
+    position: relative;
+}
+    .material_wrapper{
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: -50%;
+        transform: translate(50%, -50%);
+    }
+        .black_gradient{
+            background: linear-gradient(360deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+            position: absolute;
+            bottom: 5px;
+            height: 0%;
+            width: 100%;
+            transition-duration: 0.5s;
+        }
+        .a_material:hover .black_gradient, 
+        .collection_add:hover + .a_material .black_gradient, 
+        .bottom_material:hover + .collection_add + .a_material .black_gradient,
+        .bottom_material:hover + .a_material .black_gradient{
+            height: 100%;
+
+        }
+        .material{
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .collection_add{
+            position: absolute;
+            z-index: 90;
+            display: flex;
+            top: -32px;
+            transition-duration: 0.5s;
+        }
+        .material_wrapper:hover .collection_add{
+            top: 0px;
+        }
+        .bottom_material{
+            position: absolute;
+            z-index: 90;
+            bottom: -90px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            transition-duration: 0.5s;
+        }
+        .material_wrapper:hover .bottom_material{
+            bottom: 5px;
+        }
+
+        
+    .material_author img{
+        width: 50px;
+        height: 50px;
+        border-radius: 40px;
+        margin-right: 5px;
+    }
+    .material_author a:visited, .material_author a{
+        color: #fff;
+    }
+    .material_author span{
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    .likes_for_material{
+        display: flex;
+        height: 44px;
+        margin-top: 3px;
+    }
+    .liked{
+        background-color: #E85F5F;
+        border-radius: 40px;
+        padding-top: 6px;
+        cursor: pointer;
+    }
+    .liked img, .notliked img{
+        margin: 6px 12px;
+        width: 20px;
+        height: 20px;
+    }
+    .notliked{
+        background-color: rgb(255, 255, 255, 0.01);
+        border: 1px solid white;
+        border-radius: 40px;
+        padding-top: 6px;
+        cursor: pointer;
+    }
+    .like_count{
+        margin-right: 10px;
+        color: #fff;
+        margin-top: 10px;
+    }
+
+    .collection_select_style{
+        width: 240px;
+        height: 31px;
+        background-color: #fff;
+        font-size: 14px;
+        border: 1px solid #1D1A0F;
+    }
+    .add_to_collection{
+        width: 174px;
+        height: 31px;
+        font-size: 12px;
+        color: #fff;
+        background-color: #1D1A0F;
+        cursor: pointer;
+        transition-duration: 0.5s;
+    }
+    .add_to_collection:hover{
+        color: #1D1A0F;
+        background-color: #e8e8e8;
+        border: 1px solid #1D1A0F;
+    }

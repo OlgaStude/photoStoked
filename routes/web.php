@@ -87,7 +87,7 @@ Route::get('userfollows', function () {
     $users = Subscriptions::join('users', 'users.id', '=', 'subscriptions.followed_id')
         ->where('users_id', '=', Auth::user()->id)
         ->select('users.id', 'users.path', 'users.nikname')
-        ->paginate(2);
+        ->paginate(100);
     return view('subscriptions', compact('users'));
 })->name('userFollows');
 Route::get('moneydrain', [redirectController::class, 'drain'])->name('moneyDrain');

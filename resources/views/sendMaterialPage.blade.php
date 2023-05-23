@@ -34,6 +34,7 @@
             {{ Session::forget('success_message') }}
             @endif
         </form>
+        <div class="space"></div>
     </div>
     @include('components.footer')
 </body>

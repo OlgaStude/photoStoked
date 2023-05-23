@@ -20,7 +20,7 @@ class userLikedController extends Controller
                     ['users.id', '=', Auth::user()->id],
                     ['approved_ms.id', '<', $req->id]
                 ])
-                ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.type', 'approved_ms.likes')
+                ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.type', 'approved_ms.likes', 'approved_ms.users_id')
                 ->orderBy('approved_ms.id', 'desc')->paginate(4);
             if (Auth::check()) {
                 $collections = Collection::where('users_id', '=', Auth::user()->id)->get();
@@ -34,7 +34,7 @@ class userLikedController extends Controller
             $materials = Like::join('users', 'users.id', '=', 'likes.users_id')
                 ->join('approved_ms', 'approved_ms.id', '=', 'likes.approved_ms_id')
                 ->where('users.id', '=', Auth::user()->id)
-                ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.type', 'approved_ms.likes')
+                ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.type', 'approved_ms.likes', 'approved_ms.users_id')
                 ->orderBy('approved_ms.id', 'desc')->paginate(4);
             if (Auth::check()) {
                 $collections = Collection::where('users_id', '=', Auth::user()->id)->get();

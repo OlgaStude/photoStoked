@@ -26,6 +26,8 @@ class followController extends Controller
                 ['users_id', '=', Auth::user()->id],
                 ['followed_id', '=', $req->followed_id],
             ])->delete();
+            Message::where([['users_id', '=', Auth::user()->id], ['user_send_id', '=', $req->followed_id], ['approved_ms_id', '=', '0']])->delete();
+
         }
     }
 }

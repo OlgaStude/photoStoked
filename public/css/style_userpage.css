@@ -1,0 +1,125 @@
+@import url(clear.css);
+@import url(components/style_header.css);
+
+body{
+    overflow-x: hidden;
+}
+
+#persona{
+    display: flex;
+}
+    #persona_pfp{
+        margin-top: 25px;
+        margin-left: 34px;
+        width: 80px;
+        height: 80px;
+        border-radius: 80px;
+        margin-right: 34px;
+    }
+        #persona_info{
+            margin-right: 503px;
+        }
+        #persona_info>p{
+            width: 336px;
+            font-size: 14px;
+            line-height: 20.72px;
+        }
+            #top_fragment{
+                display: flex;
+                justify-content: space-between;
+                font-size: 24px;
+                font-weight: 600;
+                margin-top: 37px;
+                margin-bottom: 11px;
+            } 
+                #top_fragment p{
+                    margin-right: 13px;
+                }
+            #persona_info img{
+                width: 23px;
+            }
+        #persona_money{
+            margin-top: 30px;
+            width: 201px;
+            font-size: 14px;
+            text-align: center;
+        }
+            #persona_money a:visited{
+                color: #1D1A0F;
+            }
+            #persona_money a:hover{
+                color: #E85F5F;
+            }
+            #money_ammount{
+                margin-bottom: 16px;
+            }
+
+    #userpage_nav{
+        width: 101vw;
+        height: 31px;
+        background-color: #1D1A0F;
+        position: relative;
+        font-size: 14px;
+        padding-top: 7px;
+        margin-top: 26px;
+        margin-left: calc((100vw - 1536px)/-2);
+    }
+        #userpage_nav_wrapper{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        #userpage_nav a, #userpage_nav a:visited{
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 0px 17px;
+            transition-duration: 0.5s;
+        }
+        #userpage_nav a:not(:last-child){
+            border-right: 1px solid white;
+        }
+        #userpage_nav a:hover{
+            color: #bebebe;
+        }
+        #you_here:hover::after{
+            content: '';
+            border: 1px solid #bebebe;
+            background-color: #bebebe;
+        }
+        #you_here::after{
+            content: '';
+            border: 1px solid #fff;
+            border-radius: 20px;
+            width: 20px;
+            height: 1px;
+            background-color: #fff;
+            position: absolute;
+            left: 18px;
+            bottom: 0;
+            transition-duration: 0.5s;
+        }
+
+    #subscribe_btn{
+        width: 193px;
+        height: 31px;
+        font-size: 14px;
+        margin-top: 37px;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        margin-left: -580px;
+    }
+        #subscribe_btn:hover{
+            background-color: #e8e8e8;
+        }
+    .subscribe{
+        color: #fff;
+        background-color: #1D1A0F;
+    }
+    .unsubscribe{
+        color: #1D1A0F;
+        background-color: #fff;
+    }
+    
+
+    

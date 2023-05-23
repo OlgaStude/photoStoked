@@ -1,11 +1,6 @@
 @import url(clear.css);
 @import url(components/style_header.css);
 
-
-#container{
-    min-height: 90vh;
-}
-
 .sendApproved{
     margin: 43px 55px 0px 55px;
     padding: 28px 20px;

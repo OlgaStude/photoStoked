@@ -15,4 +15,5 @@
     margin: auto;
     padding-top: 77px;
     position: relative;
+    min-height: calc(100vh - 77px);
 }
