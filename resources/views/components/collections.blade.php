@@ -8,11 +8,16 @@
         
     </div></a>
     @endif
-    <p><a href="{{ url('collection/'.$collection->id) }}">{{ $collection->name }}</a></p>
-    @php($lastId = $collection->id)
-    
-    <button onclick="collection_delete('{{ $collection->id }}')">Удалиь коллекцию</button>
+    <div class="buttom_part">
+
+        <p><a href="{{ url('collection/'.$collection->id) }}">{{ $collection->name }}</a></p>
+        @php($lastId = $collection->id)
+        
+        <div onclick="collection_delete('{{ $collection->id }}')" class="delete_btn">
+            <span>-</span>
+        </div>
     </div>
+</div>
 @endforeach
 @if(isset($lastId))
 <input type="text" id='last_id' value="{{ $lastId }}" hidden>

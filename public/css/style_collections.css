@@ -139,6 +139,33 @@ body{
                 .collection_item{
                     margin-bottom: 20px;
                 }
+                .buttom_part{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 10px;
+                }
+                    .buttom_part>p a,.buttom_part>p a:visited{
+                        color: #1D1A0F;
+                        text-decoration: none;
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-left: 5px;
+                    }
+                    .buttom_part>p a:hover{
+                        text-decoration: underline;
+                    }
+                    .delete_btn{
+                        border: 1px solid #1D1A0F;
+                        height: 100%;
+                        width: 25px;
+                        text-align: center;
+                        cursor: pointer;
+                        transition-duration: 0.5s;
+                    }
+                    .delete_btn:hover{
+                        border-color: #bebebe;
+                        color: #bebebe;
+                    }
                 .collection_cover_a{
                     display: block;
                     width: 249px;
