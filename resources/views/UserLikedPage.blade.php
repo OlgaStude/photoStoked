@@ -39,8 +39,8 @@
             <a href="{{ route('userpage.show', Auth::user()->id) }}">Мои работы</a>
             <a id="you_here" href="{{ route('userLikedPage') }}">Понравилось</a>
             <a href="{{ route('userFollows') }}">Избранные авторы</a>
-            <a href="{{ route('boughtPage') }}">Мои покупки</a>
             <a href="{{ route('collections') }}">Коллекции</a>
+            <a href="{{ route('boughtPage') }}">Мои покупки</a>
         </div>
     </div>
     <div id="post_data">

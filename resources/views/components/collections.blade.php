@@ -1,15 +1,18 @@
 @foreach($users_collections as $collection)
-<p><a href="{{ url('collection/'.$collection->id) }}">{{ $collection->name }}</a></p>
-@if($collection->path != '')
-<img class="collection_cover" src="{{ asset('storage/approved_materials/'.$collection->path)}}" alt="">
-@else
-<div>
-
-</div>
-@endif
-@php($lastId = $collection->id)
-
-<button onclick="collection_delete('{{ $collection->id }}')">Удалиь коллекцию</button>
+<div class="collection_item">
+    
+    @if($collection->path != '')
+    <a class="collection_cover_a" href="{{ url('collection/'.$collection->id) }}"><div class="shadow"></div><img class="collection_cover_img" src="{{ asset('storage/approved_materials/'.$collection->path)}}" alt=""></a>
+    @else
+    <a href="{{ url('collection/'.$collection->id) }}"><div class="collection_cover">
+        
+    </div></a>
+    @endif
+    <p><a href="{{ url('collection/'.$collection->id) }}">{{ $collection->name }}</a></p>
+    @php($lastId = $collection->id)
+    
+    <button onclick="collection_delete('{{ $collection->id }}')">Удалиь коллекцию</button>
+    </div>
 @endforeach
 @if(isset($lastId))
 <input type="text" id='last_id' value="{{ $lastId }}" hidden>

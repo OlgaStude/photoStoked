@@ -18,11 +18,11 @@ class collectionsController extends Controller
                 $users_collections = Collection::where([
                     ['users_id', '=', Auth::user()->id],
                     ['id', '<', $req->id]
-                ])->orderBy('id', 'desc')->paginate(4);
+                ])->orderBy('id', 'desc')->paginate(6);
                 $view = view('components.collections', compact('users_collections'));
                 return $view;
             }
-            $users_collections = Collection::where('users_id', '=', Auth::user()->id)->orderBy('id', 'desc')->paginate(4);
+            $users_collections = Collection::where('users_id', '=', Auth::user()->id)->orderBy('id', 'desc')->paginate(6);
             return view('collections', compact('users_collections'));
         }
     }

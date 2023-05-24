@@ -41,8 +41,8 @@
             <a id="you_here" href="{{ route('userpage.show', collect(request()->segments())->last()) }}">Мои работы</a>
             <a href="{{ route('userLikedPage') }}">Понравилось</a>
             <a href="{{ route('userFollows') }}">Избранные авторы</a>
-            <a href="{{ route('boughtPage') }}">Мои покупки</a>
             <a href="{{ route('collections') }}">Коллекции</a>
+            <a href="{{ route('boughtPage') }}">Мои покупки</a>
         </div>
     </div>
          
