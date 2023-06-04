@@ -1,2 +1,161 @@
 @import url(clear.css);
 @import url(components/style_header.css);
+@font-face {
+    font-family: Jura_r;
+    src: url('fonts/Jura-Regular.ttf');
+}
+@font-face {
+    font-family: Jura_sB;
+    src: url('fonts/Jura-SemiBold.ttf');
+}
+
+#banner{
+    width: 101vw;
+    height: 145px;
+    background-color: #1D1A0F;
+    margin-left: calc((100vw - 1536px)/-2);
+    box-shadow: 0px 8px 12px 4px rgba(32, 21, 21, 0.25);
+    margin-bottom: 30px;
+    padding-top: 20px;
+}
+    #banner_wrapper{
+        width: max-content;
+        margin-top: 47px;
+        margin: auto;
+        cursor: default;
+    }
+        #banner h1{
+            font-family: Jura_r;
+            text-align: center;
+            font-size: 60px;
+            color: #fff;
+            font-weight: 500;
+        }
+        #banner span{
+            font-family: Jura_r;
+            color: #E85F5F;
+            font-weight: 600;
+        }
+        #banner p{
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+        }
+
+#popular_data{
+    padding-left: 70px;
+}
+    .owl-carousel{
+        cursor: grab;
+    }
+        #popular_data .black_gradient{
+            bottom: 0;
+        }
+        #popular_data .bottom_material{
+            bottom: -110px;
+            width: 100%;
+            padding: 15px;
+        }
+        #popular_data .material_wrapper:hover .bottom_material{
+            bottom: 5px;
+        }
+        #popular_data .material_author{
+            display: flex;
+        }
+        #popular_data .material_author img{
+            width: 50px;
+            height: 50px;
+            border-radius: 40px;
+            margin-right: 15px;
+        }
+        #popular_data .material_author span{
+            display: inline-block;
+            margin-top: 15px;
+        }
+        #popular_data .likes_for_material{
+            display: flex;
+            height: 44px;
+            margin-top: 3px;
+        }
+        #popular_data .liked{
+            background-color: #E85F5F;
+            border-radius: 40px;
+            padding-top: 6px;
+            cursor: pointer;
+        }
+        #popular_data .liked img, #popular_data .notliked img{
+            margin: 6px 12px;
+            width: 20px;
+            height: 20px;
+        }
+        #popular_data .notliked{
+            background-color: rgb(255, 255, 255, 0.01);
+            border: 1px solid white;
+            border-radius: 40px;
+            padding-top: 6px;
+            cursor: pointer;
+        }
+        #popular_data .like_count{
+            margin-right: 10px;
+            color: #fff;
+            margin-top: 10px;
+        }
+    #to_catalog_btn, #to_catalog_btn:visited{
+        display: block;
+        color: #fff;
+        background-color: #1D1A0F;
+        width: 205px;
+        height: 39px;
+        text-align: center;
+        text-decoration: none;
+        padding: 9px;
+        font-size: 18px;
+        font-weight: 600;
+        transition-duration: 0.5s;
+        margin-left: 590px;
+    }
+    #to_catalog_btn:hover{
+        color: #1D1A0F;
+        border: 1px solid #1D1A0F;
+        background-color: #e8e8e8;
+    }
+
+    #popular_authors{
+        display: flex;
+        justify-content: space-around;
+        padding-top: 20px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        height: 150px;
+        width: 100vw;
+        margin-left: calc((100vw - 1536px)/-2);
+        background-color: #1D1A0F;
+        color: #fff;
+    }
+    .pa_wrapper img{
+        width: 80px;
+        height: 80px;
+        border-radius: 50px;
+        margin: 1px;
+    }
+    .pa_wrapper p{
+        width: 100%;
+        text-align: center;
+        margin-top: 5px;
+    }
+    .pa_wrapper a, .pa_wrapper a:visited{
+        color: #fff;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .pa_wrapper:hover a{
+        text-decoration: underline;
+    }
+    .pa_wrapper:hover img{
+        outline: 1px solid #fff;
+    }
+
+    .black_gradient{
+        bottom: 0;
+    }

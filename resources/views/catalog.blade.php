@@ -4,82 +4,96 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ asset('css/style_catalog.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css" integrity="sha512-OTcub78R3msOCtY3Tc6FzeDJ8N9qvQn1Ph49ou13xgA9VsH9+LRxoFU6EqLhW4+PKRfU+/HReXmSZXHEkpYoOA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script
   src="https://code.jquery.com/jquery-3.6.3.min.js"
   integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
   crossorigin="anonymous"></script>
     <title>Каталог</title>
-    <style>
-        img, video{
-            width: 900px;
-        }
-        #loading{
-            position: fixed;
-            bottom: 0px;
-            text-align: center;
-            background-color: wheat;
-        }
-        #tags p{
-            display: inline;
-        }
-        #footer_div{
-            height: 35px;
-        }
-        .liked{
-            background-color: red;
-        }
-        .notliked{
-            background-color: grey;
-        }
-    </style>
 </head>
 <body onload="message_show()">
 @include('components.header')
-    
-    <h1>Каталог</h1>
+    <div id="container">
 
-    <div id="tags">
-        @include('components.tags')
+<div id="filter">
+    <div id="filter_bar">
+        <div id="filter_bar_text" onclick="open_close()">
+            <img src="{{ asset('storage/img/Arrow_down.png') }}" alt="">
+            <p>Фильтрация</p>
+        </div>
+        <input type="text" id="search_bar" placeholder="Введите ключевое слово (цветы, люди, бег...)">
     </div>
-@if(isset($tags[0]->id))
-    <input hidden id="tag_back_btn" value="{{ $tags[0]->id }}">
-    @endif
+    <div id="filter_options" class="closed">
+        <form action="" id="filter_form" method="get">
+            @csrf
+            <div id="demention_options">
+                <input type="radio" name="dementions" value="square" id="square">
+                <label for="square">квадратная</label><br>
+                <input type="radio" name="dementions" value="horisontal" id="horizontal">
+                <label for="horizontal">горизонтальная</label><br>
+                <input type="radio" name="dementions" value="vertical" id="vertical">
+                <label for="vertical">вертикальная</label><br>
+            </div>
+            <div id="type_options">
+                <input type="radio" name="type" value="photo" id="photo">
+                <label for="photo">фото</label><br>
+                <input type="radio" name="type" value="video" id="video">
+                <label for="video">видео</label><br>
+                <input type="radio" name="type" value="illustration" id="illustration">
+                <label for="illustration">иллюстрация</label>
+            </div>
+            <div id="filter_btns">
+                <button id="sort_btn" type="submit">сортировать</button>
+                <button id="cancel_btn">сбросить</button>
+            </div>
+        </form>
+    </div>
+</div>  
 
-
-    <input type="text" id="search_bar">
-
-    <form action="" id="filter_form" method="get">
-        @csrf
-        <input type="radio" name="dementions" value="square" id="square">
-        <label for="square">квадратная</label>
-        <input type="radio" name="dementions" value="horisontal" id="horizontal">
-        <label for="horizontal">горизонтальная</label>
-        <input type="radio" name="dementions" value="vertical" id="vertical">
-        <label for="vertical">вертикальная</label>
-        <hr>
-        <input type="radio" name="type" value="photo" id="photo">
-        <label for="photo">фото</label>
-        <input type="radio" name="type" value="video" id="video">
-        <label for="video">видео</label>
-        <input type="radio" name="type" value="illustration" id="illustration">
-        <label for="illustration">иллюстрация</label>
-        <hr>
-        <button id="sort_btn" type="submit">сортировать</button>
-        <button id="cancel_btn">сбросить</button>
-    </form>
+<div id="tags">
+    <div id="tags_wrapper">
+        <div class="arrow_btn back_tags"><img id="back_tags" src="{{ asset('storage/img/Arrow_tags.png') }}" alt=""></div>
+        <div class="owl-carousel">
+            @foreach($tags as $tag)
+                <div class="slider__item">
+                    <p class="tag"><a href="#" class="tag_link">{{ $tag->tag_name }}</a></p>
+                </div>
+            @endforeach
+        </div>
+        <div class="arrow_btn forward_tags"><img id="forward_tags" src="{{ asset('storage/img/Arrow_tags.png') }}" alt=""></div>
+    </div>
+</div>
+        
+        
+        
     
-@php($lastId = 0)
-    <div id="posts_data">
+    @php($lastId = 0)
+    <div id="post_data">
         @include('components.data')
     </div>
-@if(isset($materials[0]->id))
+    @if(isset($materials[0]->id))
     @php($first_id = $materials[0]->id)
     <input type="text" id='first_id' value="{{ $first_id }}" hidden>
     @endif
     
-    <div id="footer_div"></div>
+</div>
+@include('components.footer')
+
     
     <script>
+
+        function open_close(){
+            if($('#filter_options').hasClass('closed')){
+                $('#filter_options').removeClass('closed').addClass('opened');
+                $('#filter_bar_text img').addClass('rotete');
+            }else{
+                $('#filter_options').removeClass('opened').addClass('closed');
+                $('#filter_bar_text img').removeClass('rotete');
+            }
+        }
+
         function loadMoreData(id = "", type = '', dementions = '', search_word = '', tag_name = ''){
             $.ajax({
                 url: '{{ route("catalog") }}',
@@ -89,7 +103,8 @@
                     $("#loading").remove();
                     $("#last_id").remove();
     
-                    $("#posts_data").append(data);
+                    $("#post_data").append(data);
+                    console.log(data);
                 }
             })
             .fail(function(jqXHR, ajaxOpions, throwError){
@@ -100,6 +115,7 @@
             if($(window).scrollTop() + $(window).height() >= $(document).height() - 1){
                 $("#loading").show();
                 let id = $("#last_id").val();
+                $("#last_id").remove();
                 
                 if($('#tags p').find('a.active').length !== 0){
                     let tag_name = $('#tags p').find('a.active').text();
@@ -159,7 +175,7 @@
             $(this).addClass('active');
             let tag_name = $(this).text();
             let id = parseInt($("#first_id").val()) + 1;
-            $("#posts_data").empty();
+            $("#post_data").empty();
             $('#search_bar').val('');
             loadMoreData(id, '', '', '', tag_name);
 
@@ -171,7 +187,7 @@
             var keycode = (event.keyCode ? event.keyCode : event.which);
             if(keycode == '13'){
                 let id = parseInt(parseInt($("#first_id").val())) + 1;
-                $("#posts_data").empty();
+                $("#post_data").empty();
                 let search_word = $(this).val();
                 loadMoreData(id, '', '', search_word);
             }
@@ -187,17 +203,17 @@
             if($('input[name=type]:checked', '#filter_form').val() != undefined && $('input[name=dementions]:checked', '#filter_form').val() != undefined){
                 let type = $('input[name=type]:checked', '#filter_form').val();
                 let dementions = $('input[name=dementions]:checked', '#filter_form').val();
-                $("#posts_data").empty();
+                $("#post_data").empty();
                 loadMoreData(id, type, dementions);
             }
             else if($('input[name=type]:checked', '#filter_form').val() != undefined){
                 let type = $('input[name=type]:checked', '#filter_form').val();
-                $("#posts_data").empty();
+                $("#post_data").empty();
                 loadMoreData(id, type);
             }
             else if($('input[name=dementions]:checked', '#filter_form').val() != undefined){
                 let dementions = $('input[name=dementions]:checked', '#filter_form').val();
-                $("#posts_data").empty();
+                $("#post_data").empty();
                 loadMoreData(id, '', dementions);
             }
         });
@@ -205,6 +221,21 @@
             $("input:radio").removeAttr("checked");
         });
 
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            items:6,
+            loop:true,
+            mouseDrag: false,
+        });
+        $('.back_tags').click(function() {
+            $('.owl-carousel').trigger('next.owl.carousel');
+        })
+        $('.forward_tags').click(function() {
+            $('.owl-carousel').trigger('prev.owl.carousel');
+        })
     </script>
 </body>
 </html>

@@ -48,9 +48,10 @@ form{
         .error{
             font-size: 10px;
             color: #E85F5F;
-            line-height: 0;
+            line-height: 10px;
             height: 10px;
-            margin-top: -10px;
+            margin-top: -15px;
+            margin-bottom: 5px;
             margin-left: 27px;
         }
         .file_upload{

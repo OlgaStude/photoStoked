@@ -10,27 +10,27 @@
                 <a href="{{ url('userpage/'. $material->users_id) }}"><img src="{{ asset('storage/profile_pics/'.App\Models\User::find($material->users_id)->path)}}" alt=""></a>
                 <a href="{{ url('userpage/'. $material->users_id) }}"><span>{{ App\Models\User::find($material->users_id)->nikname }}</span></a>
             </div>
-        <div class="likes_for_material">
+            <div class="likes_for_material">
 
-            <span class="like_count">{{ $material->likes }}</span>
-            
-        @if(App\Models\Like::where([ ['users_id', '=' , Auth::user()->id],
-        ['approved_ms_id', '=', $material->id],
-        ])->exists())
-        <div class="liked">
+                <span class="like_count">{{ $material->likes }}</span>
+                
+                @if(App\Models\Like::where([ ['users_id', '=' , Auth::user()->id],
+                ['approved_ms_id', '=', $material->id],
+                ])->exists())
+                <div class="liked">
 
-            <img onclick="like('{{$material->id}}', '{{ $material->users_id }}', '{{ $material->path }}', '{{ $material->type }}')"
-            class="like_button" src="{{ asset('storage/img/heart_like.png') }}" alt="">
+                    <img onclick="like('{{$material->id}}', '{{ $material->users_id }}', '{{ $material->path }}', '{{ $material->type }}')"
+                    class="like_button" src="{{ asset('storage/img/heart_like.png') }}" alt="">
+                </div>
+                @else
+                <div class="notliked">
+                
+                    <img onclick="like('{{$material->id}}', '{{ $material->users_id }}', '{{ $material->path }}', '{{ $material->type }}')"
+                        class="like_button" src="{{ asset('storage/img/heart_like.png') }}" alt="">
+                </div>
+                @endif
+            </div>
         </div>
-        @else
-        <div class="notliked">
-        
-            <img onclick="like('{{$material->id}}', '{{ $material->users_id }}', '{{ $material->path }}', '{{ $material->type }}')"
-                class="like_button" src="{{ asset('storage/img/heart_like.png') }}" alt="">
-        </div>
-            @endif
-        </div>
-    </div>
         <div class="collection_add">
         @if(isset($collections[0]))
             <select class="collection_select_style" name="" id="collection_select">
@@ -39,11 +39,11 @@
                 @endforeach
             </select>
             <button value="{{ $material->id }}" class="add_to_collection">Добавить</button>
-            @else
+        @else
             <select class="collection_select_style" name="" id="collection_select">
                 <option value="">У вас пока нет коллекций</option>
             </select>
-            @endif
+        @endif
         </div>
         @endauth
         @guest
@@ -74,10 +74,6 @@
     
 </div>
 </div>
-
-
-
-
 
 @php($lastId = $material->id)
 

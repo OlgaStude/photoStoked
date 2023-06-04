@@ -32,8 +32,8 @@ class catalogController extends Controller
                         ['tags.tag_name', '=', $req->tag_name],
                         ['approved_ms.id', '<', $req->id]
                     ])
-                    ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.type', 'approved_ms.likes', 'tags.tag_name')
-                    ->orderBy('approved_ms.id', 'desc')->paginate(2);
+                    ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.type', 'approved_ms.likes', 'approved_ms.users_id as users_id', 'tags.tag_name')
+                    ->orderBy('approved_ms.id', 'desc')->paginate(6);
                 $cur_id = 0;
                 foreach ($materials as $row => $material) {
                     if ($material->id == $cur_id) {
@@ -49,8 +49,8 @@ class catalogController extends Controller
                             ['tags.tag_name', 'LIKE', '%' . $req->search_word . '%'],
                             ['approved_ms.id', '<', $req->id]
                         ])
-                        ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.type', 'approved_ms.likes', 'tags.tag_name')
-                        ->orderBy('approved_ms.id', 'desc')->paginate(2);
+                        ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.type', 'approved_ms.likes', 'approved_ms.users_id as users_id', 'tags.tag_name')
+                        ->orderBy('approved_ms.id', 'desc')->paginate(6);
                     $cur_id = 0;
                     foreach ($materials as $row => $material) {
                         if ($material->id == $cur_id) {
@@ -59,26 +59,26 @@ class catalogController extends Controller
                         $cur_id = $material->id;
                     }
                 } else {
-                    $materials = Approved_m::where('id', '<', $req->id)->latest()->paginate(2);
+                    $materials = Approved_m::where('id', '<', $req->id)->latest()->paginate(6);
                 }
             } elseif ($req->type != '' && $req->dementions != '') {
                 $materials = Approved_m::where([
                     ['type', '=', $req->type],
                     ['dimentions', '=', $req->dementions],
                     ['id', '<', $req->id]
-                ])->latest()->paginate(2);
+                ])->latest()->paginate(6);
             } elseif ($req->type != '') {
                 $materials = Approved_m::where([
                     ['type', '=', $req->type],
                     ['id', '<', $req->id]
-                ])->latest()->paginate(2);
+                ])->latest()->paginate(6);
             } elseif ($req->dementions != '') {
                 $materials = Approved_m::where([
                     ['dimentions', '=', $req->dementions],
                     ['id', '<', $req->id]
-                ])->latest()->paginate(2);
+                ])->latest()->paginate(6);
             } else {
-                $materials = Approved_m::where('id', '<', $req->id)->latest()->paginate(2);
+                $materials = Approved_m::where('id', '<', $req->id)->latest()->paginate(6);
             }
             if (Auth::check()) {
                 $collections = Collection::where('users_id', '=', Auth::user()->id)->get();
@@ -89,16 +89,15 @@ class catalogController extends Controller
             $view = view('components.data', compact('materials', 'collections'));
             return $view;
         }
-        $materials = Approved_m::latest()->paginate(2);
+        $materials = Approved_m::latest()->paginate(6);
         if (Auth::check()) {
             $collections = Collection::where('users_id', '=', Auth::user()->id)->get();
         } else {
             $collections = [];
         }
 
-        $tags = Tag::orderBy('id', 'DESC')->paginate(5);
-        $likes = Like::all();
-        return view('catalog', compact('materials', 'tags', 'likes', 'collections'));
+        $tags = Tag::orderBy('id', 'DESC')->get();
+        return view('catalog', compact('materials', 'tags', 'collections'));
     }
 
 }

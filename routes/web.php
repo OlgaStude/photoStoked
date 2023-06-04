@@ -148,8 +148,8 @@ Route::get('bought', function () {
         $materials = Bought_material::join('approved_ms', 'approved_ms.id', '=', 'bought_materials.approved_ms_id')
             ->join('users', 'users.id', '=', 'bought_materials.users_id')
             ->where('users.id', '=', Auth::user()->id)
-            ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.dimentions', 'approved_ms.type', 'approved_ms.likes')
-            ->paginate(2);
+            ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.dimentions', 'approved_ms.type', 'approved_ms.users_id', 'approved_ms.likes')
+            ->paginate(10);
         $collections = Collection::where('users_id', '=', Auth::user()->id)->get();
         return view('boughtMaterials', compact('materials', 'collections'));
     } else {
@@ -164,7 +164,7 @@ Route::get('buyingpage', function(){
 
 Route::get('payment/{id}', function($id){
     
-    $title = 'Купить';
+    $title = 'Приобрести';
     if($id == 1){
         $ammount = '10';
     }elseif($id == 2){

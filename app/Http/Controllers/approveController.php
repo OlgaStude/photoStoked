@@ -37,8 +37,9 @@ class approveController extends Controller
     public function send(approvalRequest $req){
         $req->file('material')->store('public/approved_materials');
         $material_name = $req->file('material')->hashName();
+        $original_name = Sent_material::find($req->material_id)->path;
         
-        Approved_m::create(array_merge($req->validated(), ['path' => $material_name, 'likes' => 0]));
+        Approved_m::create(array_merge($req->validated(), ['path' => $material_name, 'original_path' => $original_name, 'likes' => 0]));
         
         $tags = explode(',',$req->tags);
 
@@ -50,7 +51,7 @@ class approveController extends Controller
             Material_tag::create(['approved_ms_id' => $req->material_id, 'tags_id' => Tag::where('tag_name', $tag)->value('id')]);
         }
 
-        Storage::delete("public/sent_materials/".Sent_material::find($req->material_id)->path);
+        Storage::move("public/sent_materials/".$original_name, "public/original_imgs/".$original_name);
         Sent_material::find($req->material_id)->delete();
         return redirect()->back();
 

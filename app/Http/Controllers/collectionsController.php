@@ -31,22 +31,26 @@ class collectionsController extends Controller
         if (Auth::check()) {
             if ($req->ajax()) {
                 $pop_materials = Collection_item::join('approved_ms', 'approved_ms.id', '=', 'collection_items.approved_ms_id')
-                    ->where([
-                        ['collections_id', '=', $id],
-                        ['approved_ms.id', '>', $req->id]
-                    ])
-                    ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.likes', 'approved_ms.type', 'approved_ms.dimentions')
-                    ->paginate(2);
-                $collection = Collection::where('users_id', '=', Auth::user()->id)->get();
-                $view = view('components.collection_items', compact('pop_materials', 'collection'));
+                ->join('users', 'users.id', '=', 'approved_ms.users_id')
+                ->where([
+                    ['collections_id', '=', $id],
+                    ['collection_items.id', '>', $req->id]
+                ])
+                ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.likes', 'approved_ms.type', 'approved_ms.dimentions', 'collection_items.id as ci_id', 'users.id as users_id')
+                ->paginate(6);
+                $collection = Collection::where('id', '=', $id)->get();
+                $collections = Collection::where('users_id', '=', Auth::user()->id)->get();
+                $view = view('components.collection_items', compact('pop_materials', 'collection', 'collections'));
                 return $view;
             }
             $pop_materials = Collection_item::join('approved_ms', 'approved_ms.id', '=', 'collection_items.approved_ms_id')
+                ->join('users', 'users.id', '=', 'approved_ms.users_id')
                 ->where('collections_id', '=', $id)
-                ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.likes', 'approved_ms.type', 'approved_ms.dimentions')
-                ->paginate(2);
+                ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.likes', 'approved_ms.type', 'approved_ms.dimentions', 'collection_items.id as ci_id', 'users.id as users_id')
+                ->paginate(6);
             $collection = Collection::where('id', '=', $id)->get();
-            return view('collectionPage', compact('pop_materials', 'collection'));
+            $collections = Collection::where('users_id', '=', Auth::user()->id)->get();
+            return view('collectionPage', compact('pop_materials', 'collection', 'collections'));
         }
     }
     public function make(Request $req)
@@ -82,11 +86,13 @@ class collectionsController extends Controller
             ['approved_ms_id', '=', $req->material_id]
         ])->delete();
         $pop_materials = Collection_item::join('approved_ms', 'approved_ms.id', '=', 'collection_items.approved_ms_id')
-            ->where('collections_id', '=', $req->collection_id)
-            ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.likes', 'approved_ms.type', 'approved_ms.dimentions')
-            ->paginate(20);
+                ->join('users', 'users.id', '=', 'approved_ms.users_id')
+                ->where('collections_id', '=', $req->collection_id)
+                ->select('approved_ms.id', 'approved_ms.path', 'approved_ms.likes', 'approved_ms.type', 'approved_ms.dimentions', 'collection_items.id as ci_id', 'users.id as users_id')
+                ->paginate(100);
         $collection = Collection::where('id', '=', $req->collection_id)->get();
-        $view = view('components.collection_items', compact('pop_materials', 'collection'));
+        $collections = Collection::where('users_id', '=', Auth::user()->id)->get();
+        $view = view('components.collection_items', compact('pop_materials', 'collection', 'collections'));
         return $view;
     }
 

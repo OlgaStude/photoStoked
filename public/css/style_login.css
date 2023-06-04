@@ -48,7 +48,7 @@ form{
     .error{
         font-size: 10px;
         color: #E85F5F;
-        line-height: 0;
+        line-height: 10px;
         height: 25px;
         margin-top: -25px;
         margin-left: 27px;

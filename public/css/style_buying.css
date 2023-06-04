@@ -1,0 +1,113 @@
+@import url(clear.css);
+@import url(components/style_header.css);
+
+#tittle{
+    text-align: center;
+    margin-top: 76px;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 45px;
+}
+form{
+    width: 460px;
+    height: 266px;
+    background-color: #fff;
+    border: 1px solid #1D1A0F;
+    box-shadow: 0px 8px 10px -2px rgba(11, 108, 85, 0.25);
+    margin: auto;
+}
+    select{
+        width: 404px;
+        height: 31px;
+        margin-top: 31px;
+        margin-left: 26px;
+        font-size: 12px;
+        font-weight: 500;
+        padding-left: 10px;
+        margin-bottom: 22px;
+        border: 1px solid #1D1A0F;
+    }
+    #second_row, #last_row{
+        width: 404px;
+        margin-left: 26px;
+        height: 31px;
+        margin-bottom: 22px;
+        overflow: visible;
+        position: relative;
+    }
+        #second_row input, #last_row input{
+            border: 1px solid #1D1A0F;
+            height: 31px;
+            font-size: 12px;
+            font-weight: 500;
+            padding-left: 10px;
+        }
+        #card, #name{
+            width: 269px;
+            margin-right: 16px;
+        }
+        #month, #year{
+            width: 41px;
+            padding-left: 7px;
+        }
+        #month{
+            margin-right: 6px;
+        }
+        #second_row span{
+            margin-right: 6px;
+        }
+    #last_row{
+        display: flex;
+    }
+        #name{
+            margin-right: 3px;
+        }
+        #text{
+            font-size: 10px;
+            width: 71px;
+            font-weight: 500;
+            text-align: right;
+            padding-top: 5px;
+        }
+        #cvc{
+            width: 51px;
+            margin-left: 10px;
+        }
+    form button{
+        width: 169px;
+        height: 31px;
+        margin-left: 145px;
+        margin-top: 10px;
+        background-color: #1D1A0F;
+        cursor: pointer;
+        transition-duration: 0.5s;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    form button:hover{
+        border: 1px solid #1D1A0F;
+        background-color: #e8e8e8;
+        color: #1D1A0F;
+    }
+    
+    .error{
+        font-size: 10px;
+        color: #E85F5F;
+        position: absolute;
+    }
+        .card{
+            bottom: -15px;
+        }
+        .name{
+            bottom: -15px;
+        }
+        .cvc{
+            right: 0;
+            bottom: -15px;
+        }
+        .sucsess{
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+        }

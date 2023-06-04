@@ -1,0 +1,53 @@
+@import url(clear.css);
+@import url(components/style_header.css);
+
+#top_text{
+    display: flex;
+    justify-content: space-between;
+    width: 1248px;
+    margin: auto;
+    margin-top: 30px;
+}
+#top_text a, #top_text a:visited{
+    color: #1D1A0F;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+}
+#top_text a:hover{
+    text-decoration: underline;
+}
+#top_text img{
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+}
+#top_text h1{
+    font-size: 25px;
+    font-weight: 600;
+}
+
+
+.remove_from_collection{
+    width: 174px;
+    height: 31px;
+    font-size: 12px;
+    color: #fff;
+    background-color: #E85F5F;
+    border: 0;
+    cursor: pointer;
+    transition-duration: 0.5s;
+}
+.remove_from_collection:hover{
+    color: #e8e8e8;
+}
+.collection_add{
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    top: -65px;
+}
+
+.black_gradient{
+    bottom: 0;
+}

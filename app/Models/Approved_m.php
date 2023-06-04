@@ -12,6 +12,7 @@ class Approved_m extends Model
     protected $fillable = [
         'users_id',
         'path',
+        'original_path',
         'dimentions',
         'type',
         'likes'

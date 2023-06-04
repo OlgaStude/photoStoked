@@ -1,0 +1,110 @@
+@import url(clear.css);
+@import url(components/style_header.css);
+
+#material_info{
+    display: flex;
+    margin-top: 47px;
+}
+#material_container{
+    width: 900px;
+    height: 640px;
+    position: relative;
+    margin-left: 20px;
+}
+#material_wrapper{
+}
+    .material{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 100%;
+        max-height: 100%;
+        margin-right: 56px;
+    }
+    #info{
+        font-size: 20px;
+        font-weight: 600;
+        position: relative;
+        margin-left: 20px;
+        width: 500px;
+    }
+        #demention{
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        #info_bottom{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            text-align: right;
+        }
+            #bought{
+                display: none;
+            }
+            #info_bottom a, #info_bottom a:visited{
+                color: #1D1A0F;
+            }
+            #info_bottom p{
+                margin-top: 15px;
+            }
+            #info_bottom a:hover{
+                color: #E85F5F;
+            }
+            #buy_counter{
+                font-size: 14px;
+                font-weight: 500;
+            }
+            #not_bought button{
+                width: 119px;
+                height: 37px;
+                background-color: #1D1A0F;
+                color: #fff;
+                font-size: 20px;
+                font-weight: 600;
+                cursor: pointer;
+                transition-duration: 0.5s;
+            }
+            #not_bought button:hover{
+                border: 1px solid #1D1A0F;
+                background-color: #e8e8e8;
+                color: #1D1A0F;
+            }
+    #author_likes{
+        width: 1000px;
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 50px;
+    }
+        #user a{
+            display: flex;
+            column-gap: 25px;
+        }
+        #user a, #user a:visited{
+            color: #1D1A0F;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+        }
+        #user p{
+            margin-top: 25px;
+        }
+        #user img{
+            width: 70px;
+            height: 70px;
+            border-radius: 50px;
+        }
+    #likes{
+        display: flex;
+        column-gap: 10px;
+        height: 44px;
+        margin-top: 10px;
+    }
+        #likes p{
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        .notliked{
+            border: 1px solid #1D1A0F;
+        }

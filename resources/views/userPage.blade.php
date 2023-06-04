@@ -120,7 +120,7 @@
                 if ($(window).scrollTop() + $(window).height() >= $(document).height()) {
                 $("#loading").show();
                 let id = $("#last_id").val();
-                console.log(id);
+                $("#last_id").remove();
                 loadMoreData(id);
             }
         });

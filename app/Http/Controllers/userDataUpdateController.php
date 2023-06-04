@@ -22,12 +22,6 @@ class userDataUpdateController extends Controller
     public function updateData(updateDataRequest $req){
         
         
-        if($req->name){
-            User::where("id", $req->id)->update(["name" => $req->name]);
-        }
-        if($req->surname){
-            User::where("id", $req->id)->update(["surname" => $req->surname]);
-        }
         if($req->nikname){
             User::where("id", $req->id)->update(["nikname" => $req->nikname]);
         }

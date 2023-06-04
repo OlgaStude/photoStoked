@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+body{
+    overflow-x: hidden;
+}
+
 #container *{
     overflow: hidden;
 }
@@ -16,4 +20,5 @@
     padding-top: 77px;
     position: relative;
     min-height: calc(100vh - 77px);
+    margin-bottom: 30px;
 }

@@ -56,13 +56,13 @@ body{
 
     #userpage_nav{
         width: 101vw;
-        margin-left: calc((100vw - 1536px)/-2);
         height: 31px;
         background-color: #1D1A0F;
         position: relative;
         font-size: 14px;
         padding-top: 7px;
         margin-top: 26px;
+        margin-left: calc((100vw - 1536px)/-2);
     }
         #userpage_nav_wrapper{
             position: absolute;
@@ -95,31 +95,17 @@ body{
             height: 1px;
             background-color: #fff;
             position: absolute;
-            left: 18px;
+            left: 552px;
             bottom: 0;
             transition-duration: 0.5s;
         }
 
-    #subscribe_btn{
-        width: 193px;
-        height: 31px;
-        font-size: 14px;
-        margin-top: 37px;
-        cursor: pointer;
-        transition-duration: 0.5s;
-        margin-left: -580px;
-    }
-        #subscribe_btn:hover{
-            background-color: #e8e8e8;
+        #page_info{
+            font-size: 16px;
+            font-weight: 500;
+            width: 900px;
+            margin: auto;
+            margin-top: 50px;
+            text-align: center;
+            line-height: 23.68px;
         }
-    .subscribe{
-        color: #fff;
-        background-color: #1D1A0F;
-    }
-    .unsubscribe{
-        color: #1D1A0F;
-        background-color: #fff;
-    }
-    
-
-    

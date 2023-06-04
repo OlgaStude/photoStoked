@@ -109,12 +109,14 @@
                     width: 56px;
                     height: 56px;
                     border-radius: 30px;
+                    margin-right: 5px;
                 }
                 #message p{
                     font-size: 14px;
                     font-weight: 400;
                     text-align: center;
                     margin-top: 14px;
+                    width: 120px;
                 }
                 #del_btn{
                     width: 18px;
@@ -164,13 +166,13 @@ footer{
     flex-wrap: wrap;
     width: 1248px;
     margin: auto;
-    margin-top: 20px;
     column-gap: 3px;
 }
 .material_container{
     width: 414px;
     height: 430px;
     position: relative;
+    margin-top: 30px;
 }
     .material_wrapper{
         max-width: 100%;
@@ -184,7 +186,7 @@ footer{
         .black_gradient{
             background: linear-gradient(360deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
             position: absolute;
-            bottom: 5px;
+            bottom: 1px;
             height: 0%;
             width: 100%;
             transition-duration: 0.5s;

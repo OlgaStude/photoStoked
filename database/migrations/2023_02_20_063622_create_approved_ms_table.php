@@ -17,6 +17,7 @@ class CreateApprovedMsTable extends Migration
             $table->id();
             $table->foreignId('users_id')->constrained();
             $table->string('path');
+            $table->string('original_path');
             $table->string('type');
             $table->string('dimentions');
             $table->integer('likes');

@@ -28,6 +28,7 @@ class paymentRequest extends FormRequest
             'month' => 'required| max: 31| numeric',
             'year' => 'required| max: 99| numeric',
             'cvc' => 'required| max: 999| numeric',
+            'name' => 'required'
         ];
     }
 

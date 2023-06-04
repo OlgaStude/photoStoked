@@ -32,7 +32,7 @@ class purchaseController extends Controller
 
     public function download($id)
     {
-        $path = "public/approved_materials/" . Approved_m::find($id)->path;
+        $path = "public/original_imgs/" . Approved_m::find($id)->original_path;
 
         return Storage::download($path);
     }
